@@ -5,6 +5,17 @@ output:
   pdf_document: default
 ---
 
+## Installation of required software
+
+Please, execute the functions below to install and load the ***R*** package *Teaching Economics with R* (if you haven't done so already).
+
+```{r installation, eval=FALSE, include=FALSE}
+install.packages("devtools")
+devtools::install_github("lyuben-ivanov/ter")
+
+library(ter)
+```
+
 ## Introduction to ppf_plot()
 
 Please, type `ppf_plot()` in the code chunk below and execute the chunk to create a plot of the production possibilities frontier for a fictional country called Technopia that only produces two types of goods (pizzas and robots).
