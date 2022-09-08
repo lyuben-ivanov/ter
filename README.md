@@ -7,6 +7,7 @@ Currently the installation requires the package ```devtools``` or the package ``
 
 ```
 devtools::install_github("lyuben-ivanov/ter")
+
 remotes::install_github("lyuben-ivanov/ter")
 ```
 
