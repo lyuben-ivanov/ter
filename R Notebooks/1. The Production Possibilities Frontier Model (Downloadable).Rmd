@@ -5,16 +5,6 @@ output:
   pdf_document: default
 ---
 
-## Installation of required software
-
-Please, execute the functions below to install and load the ***R*** package *Teaching Economics with R* (if you haven't done so already).
-
-```{r installation, eval=FALSE, include=FALSE}
-install.packages("devtools")
-devtools::install_github("lyuben-ivanov/ter")
-
-library(ter)
-```
 
 ## Introduction to ppf_plot()
 
