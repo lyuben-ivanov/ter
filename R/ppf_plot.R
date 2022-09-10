@@ -6,21 +6,21 @@
 # the production possibility frontier for the respective economy
 
 ppf_plot <- function(
-    maximum_quantity_of_product_1 = 50,
-    maximum_quantity_of_product_2 = 30,
-    new_maximum_quantity_of_product_1 = 50,
-    new_maximum_quantity_of_product_2 = 30,
-    linear = FALSE,
-    plot_point_1 = FALSE,
-    point_label_1 = "A",
-    quantity_product_1 = 10,
-    quantity_product_2 = 28.75,
-    plot_point_2 = FALSE,
-    point_label_2 = "B",
-    quantity_product_1_point_2 = 15,
-    quantity_product_2_point_2 = 15,
-    x_axis_label = "Production of pizzas (mlns per month)",
-    y_axis_label = "Production of robots (thousands per month)"
+  maximum_quantity_of_product_1 = 50,
+  maximum_quantity_of_product_2 = 30,
+  new_maximum_quantity_of_product_1 = 50,
+  new_maximum_quantity_of_product_2 = 30,
+  linear = FALSE,
+  plot_point = FALSE,
+  point_label = "A",
+  quantity_product_1 = 10,
+  quantity_product_2 = 28.75,
+  plot_point_2 = FALSE,
+  point_label_2 = "B",
+  quantity_product_1_point_2 = 15,
+  quantity_product_2_point_2 = 15,
+  x_axis_label = "Production of pizzas (mlns per month)",
+  y_axis_label = "Production of robots (thousands per month)"
 ) {
 
   xmax <- maximum_quantity_of_product_1             # simplify variables
@@ -31,7 +31,7 @@ ppf_plot <- function(
   plot.new()                                        # start blank plot
   plot.window(xlim = c(-1,110), ylim = c(-1, 55),   # set plot limits
               asp = 1                               # set axes aspect ratio
-              )
+  )
 
   xticks <- seq(0, 100, 10)         # set locations of tick marks on x-axis
   yticks <- seq(0, 50, 10)          # set locations of tick marks on y-axis
@@ -114,28 +114,28 @@ ppf_plot <- function(
     )
   }
 
-  if (plot_point_1 == TRUE) {
+  if (plot_point == TRUE) {
     points(
       x = quantity_product_1,
       y = quantity_product_2,
       pch = 19,                         # set plotting character to solid circle
       cex = 0.66                        # make the solid circle smaller
     )
-      
+
     text(
       x = quantity_product_1 + 2.1,
       y = quantity_product_2 + 2.1,
-      labels = point_label_1
+      labels = point_label
     )
-  }  
-      
+  }
+
   if (plot_point_2 == TRUE) {
     points(
       x = quantity_product_1_point_2,
       y = quantity_product_2_point_2,
       pch = 19,                         # set plotting character to solid circle
       cex = 0.66                        # make the solid circle smaller
-    )    
+    )
 
     text(
       x = quantity_product_1_point_2 + 2.1,
@@ -145,15 +145,13 @@ ppf_plot <- function(
   }
 
 
-par(new = TRUE, mgp = c(1.5, 1, 0))
-title(xlab = x_axis_label)
+  par(new = TRUE, mgp = c(1.5, 1, 0))
+  title(xlab = x_axis_label)
 
-par(new = TRUE, mgp = c(1.8, 1, 0))
-title(ylab = y_axis_label)
+  par(new = TRUE, mgp = c(1.8, 1, 0))
+  title(ylab = y_axis_label)
 
 
 }
-
-
 
 
