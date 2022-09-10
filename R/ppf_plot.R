@@ -11,10 +11,14 @@ ppf_plot <- function(
     new_maximum_quantity_of_product_1 = 50,
     new_maximum_quantity_of_product_2 = 30,
     linear = FALSE,
-    plot_points = TRUE,
-    point_label = "A",
+    plot_point_1 = FALSE,
+    point_label_1 = "A",
     quantity_product_1 = 10,
     quantity_product_2 = 28.75,
+    plot_point_2 = FALSE,
+    point_label_2 = "B",
+    quantity_product_1_point_2 = 15,
+    new_quantity_product_2_point_2 = 32,
     x_axis_label = "Production of pizzas (mlns per month)",
     y_axis_label = "Production of robots (thousands per month)"
 ) {
@@ -121,7 +125,7 @@ ppf_plot <- function(
     text(
       x = quantity_product_1 + 2.1,
       y = quantity_product_2 + 2.1,
-      labels = point_label
+      labels = point_label_1
     )
   }
 
