@@ -18,7 +18,7 @@ ppf_plot <- function(
     plot_point_2 = FALSE,
     point_label_2 = "B",
     quantity_product_1_point_2 = 15,
-    new_quantity_product_2_point_2 = 32,
+    quantity_product_2_point_2 = 15,
     x_axis_label = "Production of pizzas (mlns per month)",
     y_axis_label = "Production of robots (thousands per month)"
 ) {
@@ -114,18 +114,33 @@ ppf_plot <- function(
     )
   }
 
-  if (plot_points == TRUE) {
+  if (plot_point_1 == TRUE) {
     points(
       x = quantity_product_1,
       y = quantity_product_2,
       pch = 19,                         # set plotting character to solid circle
       cex = 0.66                        # make the solid circle smaller
     )
-
+      
     text(
       x = quantity_product_1 + 2.1,
       y = quantity_product_2 + 2.1,
       labels = point_label_1
+    )
+  }  
+      
+  if (plot_point_2 == TRUE) {
+    points(
+      x = quantity_product_1_point_2,
+      y = quantity_product_2_point_2,
+      pch = 19,                         # set plotting character to solid circle
+      cex = 0.66                        # make the solid circle smaller
+    )    
+
+    text(
+      x = quantity_product_1_point_2 + 2.1,
+      y = quantity_product_2_point_2 + 2.1,
+      labels = point_label_2
     )
   }
 
