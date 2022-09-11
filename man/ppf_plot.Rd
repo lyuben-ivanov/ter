@@ -11,17 +11,24 @@ which shows the various combinations of output that the country can produce
 given its resources and available technology.
 }
 \usage{
-ppf_plot(maximum_quantity_of_product_1 = 50,
-    maximum_quantity_of_product_2 = 30,
-    new_maximum_quantity_of_product_1 = 50,
-    new_maximum_quantity_of_product_2 = 30,
-    linear = FALSE,
-    plot_points = TRUE,
-    point_label = "A",
-    quantity_product_1 = 10,
-    quantity_product_2 = 28.75,
-    x_axis_label = "Production of pizzas (mlns per month)",
-    y_axis_label = "Production of robots (hundreds per month)")
+ppf_plot(
+  maximum_quantity_of_product_1 = 50,
+  maximum_quantity_of_product_2 = 30,
+  plot_new_frontier = FALSE,
+  new_maximum_quantity_of_product_1 = 50,
+  new_maximum_quantity_of_product_2 = 30,
+  plot_point = FALSE,
+  point_label = "A",
+  quantity_of_product_1 = 10,
+  quantity_of_product_2 = 28.75,
+  plot_new_point = FALSE,
+  new_point_label = "B",
+  new_quantity_of_product_1 = 15,
+  new_quantity_of_product_2 = 15,
+  x_axis_label = "Production of pizzas (mlns per month)",
+  y_axis_label = "Production of robots (thousands per month)",
+  linear = FALSE
+  )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -35,6 +42,10 @@ integer: the amount of the second good or service that can be produced
 if all resources in the economy are allocated to the production of this good or
 service
 }
+  \item{plot_new_frontier}{
+logical: indicates whether a new frontier should be plotted alongside the
+existing one
+  }
   \item{new_maximum_quantity_of_product_1}{
 integer: the amount of the first good or service that can be produced
 if the productivity of the economy with regard to this good or service changes
@@ -45,17 +56,48 @@ integer: the amount of the second good or service that can be produced
 if the productivity of the economy with regard to this good or service changes
 or more resources become available
 }
+ \item{plot_point}{
+logical: indicates whether a point showing possible combination of the two
+products should be plotted on the graph or not
+}
+  \item{point_label}{
+string: a capital letter (or any other string) to replace the default label of
+the point
+}
+ \item{quantity_of_product_1}{
+integer: the x-axis location of the point showing possible combination of the two
+products
+}
+  \item{quantity_of_product_2}{
+integer: the y-axis location of the new point showing possible combination of
+the two products
+}
+ \item{plot_new_point}{
+logical: indicates whether a new point showing another possible combination
+of the two products should be plotted on the graph or not
+}
+ \item{new_point_label}{
+string: a capital letter (or any other string) to replace the default label of
+the new point
+}
+ \item{new_quantity_of_product_1}{
+integer: the x-axis location of the new point showing possible combination of
+the two products
+}
+  \item{new_quantity_of_product_2}{
+integer: the y-axis location of the new point showing possible combination of
+the two products
+}
+ \item{x_axis_label}{
+string: a word or a few words to replace the default label of the x-axis
+}
+ \item{y_axis_label}{
+string: a word or a few words to replace the default label of the y-axis
+}
  \item{linear}{
 logical: indicates whether the production possibility frontier should be shown
 as a straight line (indicating constant opportunity cost) or not (indicating
 increasing opportunity cost)
-}
- \item{plot_points}{
-logical: indicates whether points should be plotted on the graph or not
-}
- \item{point_label}{
-string: a capital letter (or any other string) to replace the default label of
-the point
 }
 }
 \details{
