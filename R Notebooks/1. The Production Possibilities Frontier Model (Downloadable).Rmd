@@ -5,7 +5,6 @@ output:
   pdf_document: default
 ---
 
-
 ## Introduction to ppf_plot()
 
 Please, type `ppf_plot()` in the code chunk below and execute the chunk to create a plot of the production possibilities frontier for a fictional country called Technopia that only produces two types of goods (pizzas and robots).
@@ -14,24 +13,90 @@ Please, type `ppf_plot()` in the code chunk below and execute the chunk to creat
 ppf_plot()
 ```
 
-As you can see from the plot above, the maximum amount of pizzas that Technopia can produce with its resources and the available technology is `50` mln per month (assuming that all the resources of the country are allocated for the production of pizzas). If Technopia allocates all its resources toward production of robots it will be able to produce a maximum amount of `50` thousand robots.
+As you can see from the plot above, the maximum amount of pizzas that Technopia can produce with its resources and the available technology is `50` mln per month (assuming that all the resources of the country are allocated for the production of pizzas). If Technopia allocates all its resources toward production of robots it will be able to produce a maximum amount of `30` thousand robots.
 
-Let's learn how to use the `ppf_plot()` function in order to manipulate the graph of Technopia's production possibilities. As a first step, please clear the graph a little bit by removing point A. This can be done by entering value `FALSE` for the argument `plot_points` of the `ppf_plot` function as shown below. Please, execute the code chunk to see the result.
+Let's learn how to use the `ppf_plot()` function in order to manipulate the graph of Technopia's production possibilities. We can shift the production possibilities frontier by changing some arguments of the `ppf_plot()` function. The maximum amount of pizza that Technopia can produce can be changed by replacing the default value of the argument `new_maximum_quantity_of_product_1` with an integer ranging from `0` to `100`. The maximum amount of robots that Technopia can produce can be changed by replacing the default value of the argument `new_maximum_quantity_of_product_2` with an integer ranging from `0` to `50`. In the code chunk below the default values of the two arguments above have been changed in order to demonstrate an outward shift of the curve. You can run the code chunk in order to see how the curve shifts. Afterwards, you can try to shift the curve by changing the values of the two arguments.
 
 ```{r}
-ppf_plot(plot_points = FALSE)
+ppf_plot(
+  new_maximum_quantity_of_product_1 = 60,
+  new_maximum_quantity_of_product_2 = 35
+)
 ```
 
-Now, with some clutter removed, we can learn how to shift the production possibilities frontier by changing some arguments of the `ppf_plot()` function. The maximum amount of pizza that Technopia can produce can be changed by replacing the default value of the argument `new_maximum_quantity_of_product_1` with an integer ranging from `0` to `100`. The maximum amount of robots that Technopia can produce can be changed by replacing the default value of the argument `new_maximum_quantity_of_product_2` with an integer ranging from `0` to `50`. In the code chunk below you can try to shift the curve by changing the maximum quantity for any of the two products (or for both of them).
+However, the model above is somewhat incomplete --- it describes visually the production capacity of Technopia but does not show what quantities the citizens of Technopia would actually choose to produce. An actual production choice for Technopia can be shown on the graph by setting the value of the argument `plot_point` to `TRUE`.
+
+```{r}
+ppf_plot(
+  plot_point = TRUE
+)
+```
+
+The location and the label of the point can be modified by setting a new value for the arguments `quantity_of_product_1,` `quantity_of_product_2` and `point_label`:
+
+```{r}
+ppf_plot(
+  plot_point = TRUE,
+  quantity_of_product_1 = 5,
+  quantity_of_product_2 = 5,
+  point_label = "Inefficient outcome"
+)
+```
+
+To compare the inefficient outcome to an outcome which is not feasible, we can add a new point to the graph by setting new values to the arguments `plot_new_point,` `new_quantity_of_product_1,` `new_quantity_of_product_2` and `point_label`:
+
+```{r}
+ppf_plot(
+  plot_point = TRUE,
+  quantity_of_product_1 = 5,
+  quantity_of_product_2 = 5,
+  point_label = "Inefficient outcome",
+  plot_new_point = TRUE,
+  new_quantity_of_product_1 = 30,
+  new_quantity_of_product_2 = 30,
+  new_point_label = "Infeasible outcome"
+)
+```
+
+The last feature of `ppf_plot()` in this short introduction is the ability to change the labelling of the plot axes by providing new values to the arguments `x_axis_label` and `y_axis_label`.
+
+```{r}
+ppf_plot(
+  x_axis_label = "Quantity of product 1", 
+  y_axis_label = "Quantity of product 2"
+)
+```
+
+## Exercises
+
+### 1. Drawing the production possibilities frontier of Doveland
+
+Please use `ppf_plot()` in the space below to show the production possibilities frontier of a fictional country, Doveland, that only produces guns and butter. Given the current technology and its resources, Doveland can produce a maximum of `20` thousand guns and `30` mln pounds of butter per year.
 
 ```{r}
 
 ```
 
-Another important feature of `ppf_plot()` is the ability to choose the label and the location of the point that represents a possible combination of the two products that Technopia can produce for a given month. The location of the point on the graph is determined by the arguments `quantity_of_product_1` (an integer between `0` and `100`) and `quantity_of_product_2` (an integer between `0` and `50`). The label of point A can be changed by providing a different string (a few or more letters enclosed in parentheses) as a value of the argument `point_label` of `ppf_plot()`. Please use this information to show a combination of goods (e.g. `40` mln pizzas and `50 000` robots) that can not be produced by Technopia with the available resources and technology. Don't forget to change the label of the resulting point to "B".
+### 2. Showing Doveland's production of guns and butter
+
+Please build on the code you have provided above to show the outcome of Doveland's decision to devote most of its resources to the production of butter. Assume that Doveland is using its resources efficiently.
 
 ```{r}
-ppf_plot(quantity_product_1 = 40,
-         quantity_product_2 = 50,
-         point_label = "B")
+
+```
+
+### 3. Showing a shift of Doveland's production towards more guns and less butter
+
+Due to Doveland's neighbour country, Hawkland, course towards militarisation, Doveland's politicians decide to increase the production of guns. Please show the outcome assuming that no more resources or better technology become available but Doveland's production of both goods is still efficient.
+
+```{r}
+
+```
+
+### 4. Producing even more guns
+
+Some of Doveland's politicians are afraid that the current production of guns is still insufficient while other argue that the consumption of butter is at its minimum and can not be decreased any further without risking social discontent among the population. An economist suggests that if the productivity in the butter sector increases, more guns can be produced without the need of lowering the consumption of butter. Please use the production possibility frontier model to show whether such approach is theoretically possible.
+
+```{r}
+
 ```
