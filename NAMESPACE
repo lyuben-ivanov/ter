@@ -1,1 +1,5 @@
 exportPattern("^[[:alpha:]]+")
+import(rmarkdown)
+importFrom("graphics", "arrows", "axis", "curve", "mtext", "plot.new",
+             "plot.window", "points", "text")
+importFrom("utils", "download.file")
