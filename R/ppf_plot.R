@@ -13,12 +13,12 @@ ppf_plot <- function(
   linear = FALSE,
   plot_point = FALSE,
   point_label = "A",
-  quantity_product_1 = 10,
-  quantity_product_2 = 28.75,
-  plot_point_2 = FALSE,
-  point_label_2 = "B",
-  quantity_product_1_point_2 = 15,
-  quantity_product_2_point_2 = 15,
+  quantity_of_product_1 = 10,
+  quantity_of_product_2 = 28.75,
+  plot_new_point = FALSE,
+  new_point_label = "B",
+  new_quantity_of_product_1 = 15,
+  new_quantity_of_product_2 = 15,
   x_axis_label = "Production of pizzas (mlns per month)",
   y_axis_label = "Production of robots (thousands per month)"
 ) {
@@ -50,7 +50,8 @@ ppf_plot <- function(
        tck = 0.01,
        pos = 0)
 
-  arrows(x0 = 100,                  # add arrow at the end of x-axis
+  # add arrow at the end of x-axis
+  arrows(x0 = 100,
          y0 = 0,
          x1 = 110,
          y1 = 0,
@@ -72,7 +73,8 @@ ppf_plot <- function(
        tck = 0.01,
        las = 2)
 
-  arrows(x0 = 0,                  # add arrow at the end of y-axis
+  # add arrow at the end of y-axis
+  arrows(x0 = 0,
          y0 = 50,
          x1 = 0,
          y1 = 55,
@@ -116,42 +118,46 @@ ppf_plot <- function(
 
   if (plot_point == TRUE) {
     points(
-      x = quantity_product_1,
-      y = quantity_product_2,
+      x = quantity_of_product_1,
+      y = quantity_of_product_2,
       pch = 19,                         # set plotting character to solid circle
       cex = 0.66                        # make the solid circle smaller
     )
 
     text(
-      x = quantity_product_1 + 2.1,
-      y = quantity_product_2 + 2.1,
-      labels = point_label
+      x = quantity_of_product_1 + 1.5,
+      y = quantity_of_product_2 + 1.5,
+      labels = point_label,
+      adj = c(0, 0)
     )
   }
 
-  if (plot_point_2 == TRUE) {
+  if (plot_new_point == TRUE) {
     points(
-      x = quantity_product_1_point_2,
-      y = quantity_product_2_point_2,
+      x = new_quantity_of_product_1,
+      y = new_quantity_of_product_2,
       pch = 19,                         # set plotting character to solid circle
       cex = 0.66                        # make the solid circle smaller
     )
 
     text(
-      x = quantity_product_1_point_2 + 2.1,
-      y = quantity_product_2_point_2 + 2.1,
-      labels = point_label_2
+      x = new_quantity_of_product_1 + 1.5,
+      y = new_quantity_of_product_2 + 1.5,
+      labels = new_point_label,
+      adj = c(0, 0)
     )
   }
 
+  mtext(
+    text = x_axis_label,
+    side = 1,
+    line = 1.8
+  )
 
-  par(new = TRUE, mgp = c(1.5, 1, 0))
-  title(xlab = x_axis_label)
-
-  par(new = TRUE, mgp = c(1.8, 1, 0))
-  title(ylab = y_axis_label)
-
+  mtext(
+    text = y_axis_label,
+    side = 2,
+    line = 1.5
+  )
 
 }
-
-
