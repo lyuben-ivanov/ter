@@ -1,20 +1,19 @@
 # Time series plot
 #
-# This is a function named 'ts_plot'
+# This is a function named 'ts_plot'. It takes as an input the data and the
+# the labels for up to three lines and plots them on a nice looking plot with
+# minimal ink
 
 ts_plot <-
-  function (line_1_data,
-            line_2_data,
-            start_date,
-            end_date,
+  function (line_1_data = 1:10,
+            line_2_data = NULL,
+            line_3_data = NULL,
             y_locations,
             y_labels,
-            labels_margin=0) {
+            labels_margin = 0) {
 
 
-    line_1_data <- line_1_data[line_1_data$date >= start_date & line_1_data$date <= end_date,]
 
-    line_2_data <- line_2_data[line_2_data$date >= start_date & line_2_data$date <= end_date, ]
 
     y_min <- min(line_1_data$value, line_2_data$value)
 
