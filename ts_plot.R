@@ -1,63 +1,76 @@
 # Time series plot
 #
-# This is a function named 'ts_plot'. It takes as an input the data and the
-# the labels for up to three lines and plots them on a nice looking plot with
+# This is a function named 'ts_plot'. It takes as an input the values and the
+# labels for up to three lines and plots them on a nice looking plot with
 # minimal ink
 
 ts_plot <-
-  function (line_1_data = 1:10,
-            line_2_data = NULL,
-            line_3_data = NULL,
-            y_locations,
-            y_labels,
+  function (dates = 0:10,
+            line_1_values = 0:10,
+            line_2_values = NULL,
+            line_3_values = NULL,
+            x_ticks = c(0,10),
+            x_labels = c(0,10),
+            y_ticks = 0:10,
+            y_labels = 0:10,
             labels_margin = 0) {
 
+    y_min <- min(line_1_values, line_2_values, line_3_values)
 
+    y_max <- max(line_1_values, line_2_values, line_3_values)
 
-
-    y_min <- min(line_1_data$value, line_2_data$value)
-
-    y_max <- max(line_1_data$value, line_2_data$value)
-
-    par(mar=                            # setting the margins around the plot
-          c(2, 4, 2, 0),                # (bottom, left, top, right)
-        cex = 0.9                       # plotting text magnification
+    par(mar =                     # set margins around plot
+        c(4, 4, 4, 4),            # (bottom, left, top, right)
+        cex = 0.9,                # text magnification
+        xaxs = "i",
+        yaxs = "i"
     )
 
-    plot(                               # starting a new plot
-      line_1_data,                # providing data for the first line
-      axes = F,                   # removing the axes
-      xlab="", 		  					    # blank space for the x-axis label
-      ylab="", 		  					    # blank space for the y-axis label
-      type="l",                   # specifying the type of the plot
-      lwd=1,                      # specifying the line width
-      ylim = c(y_min, y_max),     # specifying the limit of the y-axis
-
-      xlim=                       # specifying the limit of the x-axis
-        c(as.Date(start_date), as.Date(end_date) + labels_margin)
+    plot(                         # start new plot
+      x = dates,
+      y = line_1_values,          # provide values for first line
+      axes = F,                   # remove axes
+      xlab = "", 		  					  # blank space for x-axis label
+      ylab = "", 		  					  # blank space for y-axis label
+      type = "l",                 # specify type of plot
+      lwd = 1,                    # specify line width
+      ylim = c(y_min, y_max),     # specify limit of y-axis
+      xlim =                      # specify limit of x-axis
+        c(min(dates), max(dates) + labels_margin)
     )
 
-    lines(                              # adding a second line
-      line_2_data,                      # providing data for the second line
-      lty= "dashed"                     # specifying the type of the second line
+  if (is.numeric(line_2_values) == T) {
+    lines(                              # add second line
+      x = dates,
+      y = line_2_values,                # provide values for second line
+      lty= "dashed"                     # specify type of second line
+    )
+  }
+
+    if (is.numeric(line_3_values) == T) {
+      lines(                              # add third line
+        x = dates,
+        y = line_3_values,                # provide values for third line
+        lty = "dotted"                    # specify type of third line
+      )
+    }
+
+
+    axis(						                    # add axis to plot
+      side = 1, 				                # axis should be drawn below
+      at = x_ticks,	                      # specify labels locations
+      labels = x_labels,                   # specify labels
+      tick = T,				                  # no ticks
+      family = "serif"                  # specify font
     )
 
-    axis(						                            # adding an axis to the current plot
-      side=1, 				                        	# the axis should be drawn below
-      at=as.Date(c(start_date, end_date)),	    # specifying labels locations
-      labels=c(format(as.Date(start_date), "%b %d, %Y"),
-               format(as.Date(end_date), "%b %d, %Y")),  # specifying the labels
-      tick=T,				                          	# no ticks
-      family="serif"                      		  # specifying the font
-    )
-
-    axis(						                            # adding an axis to the current plot
-      side=2, 				                        	# the axis should be drawn to the left
-      at=y_locations,	                          # specifying labels locations
-      labels=y_labels,                          # specifying the labels
-      las=2,                        	      		# specifying the label orientation
-      tick=F,				                          	# no ticks
-      family="serif"	                      		# specifying the font
+    axis(						                    # add axis to plot
+      side = 2, 				                # axis should be drawn to the left
+      at = y_ticks,	                # specify labels locations
+      labels = y_labels,                # specify labels
+      las = 2,                          # specify label orientation
+      tick = F,				                  # no ticks
+      family = "serif"	                # specify font
     )
   }
 
