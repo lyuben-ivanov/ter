@@ -34,7 +34,7 @@ ts_plot <-
       ylab = "", 		  					  # blank space for y-axis label
       type = "l",                 # specify type of plot
       lwd = 1,                    # specify line width
-      ylim = c(y_min, y_max),     # specify limit of y-axis
+      ylim = c(y_min, y_max*1.1), # specify limit of y-axis
       xlim =                      # specify limit of x-axis
         c(min(dates), max(dates) + labels_margin)
     )
