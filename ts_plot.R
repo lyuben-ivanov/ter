@@ -22,8 +22,7 @@ ts_plot <-
     par(mar =                     # set margins around plot
         c(4, 4, 4, 4),            # (bottom, left, top, right)
         cex = 0.9,                # text magnification
-        xaxs = "i",
-        yaxs = "i"
+        xaxs = "i"
     )
 
     plot(                         # start new plot
