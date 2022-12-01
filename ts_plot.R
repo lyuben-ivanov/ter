@@ -9,11 +9,14 @@ ts_plot <-
             line_1_values = 0:10,
             line_2_values = NULL,
             line_3_values = NULL,
+            line_1_label = "Line 1",
+            line_2_label = "Line 2",
+            line_3_label = "Line 3",
             x_ticks = c(0,10),
             x_labels = c(0,10),
             y_ticks = 0:10,
             y_labels = 0:10,
-            labels_margin = 0) {
+            labels_margin = 3) {
 
     y_min <- min(line_1_values, line_2_values, line_3_values)
 
@@ -38,12 +41,25 @@ ts_plot <-
         c(min(dates), max(dates) + labels_margin)
     )
 
+    text(x = tail(dates, 1),
+         y = tail(line_1_values, 1),
+         labels = line_1_label,
+         pos = 4
+    )
+
   if (is.numeric(line_2_values) == T) {
     lines(                              # add second line
       x = dates,
       y = line_2_values,                # provide values for second line
       lty= "dashed"                     # specify type of second line
     )
+
+    text(x = tail(dates, 1),
+         y = tail(line_2_values, 1),
+         labels = line_2_label,
+         pos = 4
+         )
+
   }
 
     if (is.numeric(line_3_values) == T) {
@@ -51,6 +67,12 @@ ts_plot <-
         x = dates,
         y = line_3_values,                # provide values for third line
         lty = "dotted"                    # specify type of third line
+      )
+
+      text(x = tail(dates, 1),
+           y = tail(line_2_values, 1),
+           labels = line_2_label,
+           pos = 4
       )
     }
 
