@@ -58,15 +58,15 @@ ts_plot <-
 
     axis(						                    # add axis to plot
       side = 1, 				                # axis should be drawn below
-      at = x_ticks,	                      # specify labels locations
-      labels = x_labels,                   # specify labels
+      at = x_ticks,	                    # specify labels locations
+      labels = x_labels,                # specify labels
       tick = T,				                  # no ticks
       family = "serif"                  # specify font
     )
 
     axis(						                    # add axis to plot
       side = 2, 				                # axis should be drawn to the left
-      at = y_ticks,	                # specify labels locations
+      at = y_ticks,	                    # specify labels locations
       labels = y_labels,                # specify labels
       las = 2,                          # specify label orientation
       tick = F,				                  # no ticks
