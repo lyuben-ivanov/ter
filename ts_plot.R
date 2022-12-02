@@ -16,7 +16,10 @@ ts_plot <-
             x_labels = c(0,10),
             y_ticks = 0:10,
             y_labels = 0:10,
-            labels_margin = 3) {
+            labels_margin = 3,
+            textbox_x = 5,
+            textbox_y = 9,
+            textbox_text = "Note") {
 
     y_min <- min(line_1_values, line_2_values, line_3_values)
 
@@ -92,6 +95,13 @@ ts_plot <-
       las = 2,                          # specify label orientation
       tick = F,				                  # no ticks
       family = "serif"	                # specify font
+    )
+
+# add textbox(es) to plot
+    text(
+      x = textbox_x,
+      y = textbox_y,
+      labels = textbox_text
     )
   }
 
