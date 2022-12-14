@@ -18,6 +18,8 @@ stock_plot <-
             end_date = Sys.Date(),
             stock_ticker_1 = "^GSPC",
             stock_ticker_2 = "^GSPC",
+            label_1 = "SP 500",
+            label_2 = "SP 500",
             freq_data = "monthly",
             annotation_x = NULL,
             annotation_y = NULL,
@@ -65,7 +67,7 @@ stock_plot <-
           type = "l",
           bty = "l",
           xlab = "Time",
-          main = "Value of $100 investment over time",
+          main = "",
           ylab = "",
           ylim = c(0, y_max)
           )
@@ -77,7 +79,7 @@ stock_plot <-
         )
 
       mtext(
-        text = c(stock_ticker_1, stock_ticker_2),
+        text = c(label_1, label_2),
         side = 4,
         cex = 0.9,
         at = c(
