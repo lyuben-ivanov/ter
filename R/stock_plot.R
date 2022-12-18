@@ -8,6 +8,11 @@
 #' @param stock_ticker_2 Character to provide the ticker of the second stock
 #' @param freq_data Character to indicate the frequency of financial data:
 #' 'daily', 'weekly', 'monthly' (default), 'yearly'
+#' @param annotation_x The x-axis coordinate(s) of one or more annotations
+#' @param annotation_y The y-axis coordinate(s) of one or more annotations
+#' @param annotation_text The text(s) for one or more annotations
+#'
+#'
 #'
 #'
 #'
