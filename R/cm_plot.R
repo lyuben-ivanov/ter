@@ -19,41 +19,60 @@ cm_plot <-
     f <- fixed_costs
 
     par(mar =                     # set margins around plot
-          c(4, 4, 4, 4),          # (bottom, left, top, right)
+          c(4, 5, 4, 4),          # (bottom, left, top, right)
         cex = 0.9,                # text magnification
         yaxs = "i",
-        tcl = -0.15,
+        tcl = 0,
         las = 1
     )
 
     curve(
       expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d + f/x),
       from = 1,
-      to = 25,
-      ylim = c(0, 500),
-      bty = "l"
+      to = 30,
+      ylim = c(0, 575),
+      bty = "l",
+      xlab = "",
+      ylab = ""
     )
 
     curve(
       expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d),
       from = 1,
-      to = 25,
-      ylim = c(0, 500),
-      bty = "l",
+      to = 30,
       lty = "dotted",
       add = TRUE
     )
 
     curve(
       expr = (3*x^2 - 3*(a + b)*x + 3*a*b + d),
-      from = 1,
-      to = 25,
-      ylim = c(0, 500),
+      from = 5,
+      to = 24,
       bty = "l",
       lty = "dashed",
       add = TRUE
     )
 
     abline(h = d)
+
+    usr <- par("usr")
+    arrows(
+      x0 = usr[1L],
+      x1 = usr[1:2],
+      y0 = usr[3L],
+      y1 = usr[4:3],
+      length = 0.1,
+      angle = 20,
+      xpd = TRUE
+    )
+
+    mtext(
+      text = "Price\n Cost\nRevenue",
+      side = 2,
+      cex = 0.9,
+      at = 600,
+      line = 1
+      )
+
 
   }
