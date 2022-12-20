@@ -6,17 +6,24 @@
 #'
 #'
 
+# cost_function <- function(a=20,b=4,d=250,f=1000,x=6) {
+#   x^3 - (3*(a + b)/2)*(x^2) + (3*a*b+d)*x + f
+# }
+
 cm_plot <-
   function(
     profit_maximizing_q = 20,
     profit_minimizing_q = 4,
     market_price = 250,
-    fixed_costs = 1000
+    fixed_costs = 1000,
+    price_adjusment = 0,
+    average_variable_cost_curve = TRUE
     ) {
     a <- profit_maximizing_q
     b <- profit_minimizing_q
     d <- market_price
     f <- fixed_costs
+    h <- price_adjusment
 
     par(mar =                     # set margins around plot
           c(4, 5, 4, 4),          # (bottom, left, top, right)
@@ -33,7 +40,8 @@ cm_plot <-
       ylim = c(0, 575),
       bty = "l",
       xlab = "",
-      ylab = ""
+      ylab = "",
+      lty = "longdash"
     )
 
     curve(
@@ -53,7 +61,7 @@ cm_plot <-
       add = TRUE
     )
 
-    abline(h = d)
+    abline(h = d + h)
 
     usr <- par("usr")
     arrows(
@@ -73,6 +81,7 @@ cm_plot <-
       at = 600,
       line = 1
       )
+
 
 
   }
