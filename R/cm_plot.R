@@ -19,9 +19,11 @@ cm_plot <-
     market_price = 250,
     fixed_costs = 1000,
     price_adjusment = 0,
+    show_average_cost_curve = FALSE,
     show_average_variable_cost_curve = FALSE,
     show_marginal_cost_curve = FALSE,
-    show_market_price = FALSE
+    show_market_price = TRUE,
+    show_profit_maximizing_quantity = FALSE
     ) {
     a <- profit_maximizing_q
     b <- profit_minimizing_q
@@ -32,7 +34,7 @@ cm_plot <-
 # provide plot parameters
 
     par(mar =                     # set margins around plot
-          c(4, 5, 4, 5.5),        # (bottom, left, top, right)
+          c(4, 5, 4, 7),        # (bottom, left, top, right)
         cex = 0.9,                # text magnification
         yaxs = "i",
         xaxs = "i",
@@ -42,25 +44,39 @@ cm_plot <-
 
 # draw average cost curve
 
-    curve(
-      expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d + f/x),
-      from = 1,
-      to = 30,
-      xlim = c(0,33),
-      ylim = c(0, 595),
-      bty = "l",
-      xlab = "",
-      ylab = "",
-      lty = "longdash"
-    )
+    if (show_average_cost_curve == TRUE) {
+      curve(
+        expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d + f/x),
+        from = 1,
+        to = 30,
+        xlim = c(0,33),
+        ylim = c(0, 595),
+        bty = "l",
+        xlab = "",
+        ylab = "",
+        lty = "longdash"
+      )
 
-    text(
-      x = 30,
-      y = (30^2 - 3*(a + b)/2*30 + 3*a*b + d + f/30),
-      labels = "AC",
-      xpd = TRUE,
-      pos = 4
-    )
+      text(
+        x = 30,
+        y = (30^2 - 3*(a + b)/2*30 + 3*a*b + d + f/30),
+        labels = "ATC",
+        xpd = TRUE,
+        pos = 4
+      )
+    } else {
+      curve(
+        expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d + f/x),
+        from = 1,
+        to = 30,
+        xlim = c(0,33),
+        ylim = c(0, 595),
+        bty = "l",
+        xlab = "",
+        ylab = "",
+        lty = "blank"
+      )
+    }
 
 # draw marginal cost curve
 
@@ -70,7 +86,7 @@ cm_plot <-
       from = 5,
       to = 24,
       bty = "l",
-      lty = "dashed",
+      lty = "dotdash",
       add = TRUE
     )
 
@@ -136,7 +152,7 @@ cm_plot <-
       text = "Price\n Cost\nRevenue",
       side = 2,
       cex = 0.9,
-      at = 600,
+      at = 645,
       line = 1
       )
 
@@ -159,5 +175,15 @@ cm_plot <-
     #   xpd = TRUE,
     #   box.col = "white"
     # )
+
+# show profit maximizing quantity
+
+    if (show_profit_maximizing_quantity == T) {
+      lines(
+        x = c(profit_maximizing_q, profit_maximizing_q),
+        y = c(d, 0),
+        lty = "dashed"
+      )
+    }
 
   }
