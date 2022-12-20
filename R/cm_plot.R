@@ -10,6 +10,8 @@
 #   x^3 - (3*(a + b)/2)*(x^2) + (3*a*b+d)*x + f
 # }
 
+# assign function definition to cm_plot()
+
 cm_plot <-
   function(
     profit_maximizing_q = 20,
@@ -19,13 +21,15 @@ cm_plot <-
     price_adjusment = 0,
     show_average_variable_cost_curve = FALSE,
     show_marginal_cost_curve = FALSE,
-    show_market_price == FALSE
+    show_market_price = FALSE
     ) {
     a <- profit_maximizing_q
     b <- profit_minimizing_q
     d <- market_price
     f <- fixed_costs
     h <- price_adjusment
+
+# provide plot parameters
 
     par(mar =                     # set margins around plot
           c(4, 5, 4, 4),          # (bottom, left, top, right)
@@ -41,16 +45,25 @@ cm_plot <-
       expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d + f/x),
       from = 1,
       to = 30,
-      ylim = c(0, 575),
+      xlim = c(0,33),
+      ylim = c(0, 595),
       bty = "l",
       xlab = "",
       ylab = "",
       lty = "longdash"
     )
 
+    text(
+      x = 30,
+      y = (30^2 - 3*(a + b)/2*30 + 3*a*b + d + f/30),
+      labels = "AC",
+      xpd = TRUE,
+      pos = 4
+    )
+
 # draw average variable cost curve
 
-   if (average_variable_cost_curve == TRUE) {
+   if (show_average_variable_cost_curve == TRUE) {
      curve(
        expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d),
        from = 1,
@@ -79,6 +92,8 @@ cm_plot <-
       abline(h = d + h)
     }
 
+# add arrows to end of plot axes
+
     usr <- par("usr")
     arrows(
       x0 = usr[1L],
@@ -90,6 +105,8 @@ cm_plot <-
       xpd = TRUE
     )
 
+# label y-axis
+
     mtext(
       text = "Price\n Cost\nRevenue",
       side = 2,
@@ -98,6 +115,24 @@ cm_plot <-
       line = 1
       )
 
+# label x-axis
 
+    mtext(
+      text = "Quantity",
+      side = 1,
+      cex = 0.9,
+      at = 35,
+      line = 1,
+      bg = "black"
+    )
+
+    # legend(
+    #   x = 30,
+    #   y = -15,
+    #   legend = "Quantity",
+    #   bg = "white",
+    #   xpd = TRUE,
+    #   box.col = "white"
+    # )
 
   }
