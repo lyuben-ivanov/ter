@@ -17,7 +17,9 @@ cm_plot <-
     market_price = 250,
     fixed_costs = 1000,
     price_adjusment = 0,
-    average_variable_cost_curve = TRUE
+    show_average_variable_cost_curve = FALSE,
+    show_marginal_cost_curve = FALSE,
+    show_market_price == FALSE
     ) {
     a <- profit_maximizing_q
     b <- profit_minimizing_q
@@ -33,6 +35,8 @@ cm_plot <-
         las = 1
     )
 
+# draw average cost curve
+
     curve(
       expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d + f/x),
       from = 1,
@@ -44,14 +48,21 @@ cm_plot <-
       lty = "longdash"
     )
 
-    curve(
-      expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d),
-      from = 1,
-      to = 30,
-      lty = "dotted",
-      add = TRUE
-    )
+# draw average variable cost curve
 
+   if (average_variable_cost_curve == TRUE) {
+     curve(
+       expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d),
+       from = 1,
+       to = 30,
+       lty = "dotted",
+       add = TRUE
+     )
+   }
+
+# draw marginal cost curve
+
+  if (show_marginal_cost_curve == TRUE) {
     curve(
       expr = (3*x^2 - 3*(a + b)*x + 3*a*b + d),
       from = 5,
@@ -60,8 +71,13 @@ cm_plot <-
       lty = "dashed",
       add = TRUE
     )
+  }
 
-    abline(h = d + h)
+# draw market price (with possible adjustment to demonstrate normal profit)
+
+    if (show_market_price == TRUE) {
+      abline(h = d + h)
+    }
 
     usr <- par("usr")
     arrows(
