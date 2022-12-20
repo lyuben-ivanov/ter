@@ -32,9 +32,10 @@ cm_plot <-
 # provide plot parameters
 
     par(mar =                     # set margins around plot
-          c(4, 5, 4, 4),          # (bottom, left, top, right)
+          c(4, 5, 4, 5.5),        # (bottom, left, top, right)
         cex = 0.9,                # text magnification
         yaxs = "i",
+        xaxs = "i",
         tcl = 0,
         las = 1
     )
@@ -61,18 +62,6 @@ cm_plot <-
       pos = 4
     )
 
-# draw average variable cost curve
-
-   if (show_average_variable_cost_curve == TRUE) {
-     curve(
-       expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d),
-       from = 1,
-       to = 30,
-       lty = "dotted",
-       add = TRUE
-     )
-   }
-
 # draw marginal cost curve
 
   if (show_marginal_cost_curve == TRUE) {
@@ -84,12 +73,48 @@ cm_plot <-
       lty = "dashed",
       add = TRUE
     )
+
+    text(
+      x = 24,
+      y = (3*24^2 - 3*(a + b)*24 + 3*a*b + d),
+      labels = "MC",
+      xpd = TRUE,
+      pos = 4
+    )
   }
+
+# draw average variable cost curve
+
+   if (show_average_variable_cost_curve == TRUE) {
+     curve(
+       expr = (x^2 - 3*(a + b)/2*x + 3*a*b + d),
+       from = 1,
+       to = 30,
+       lty = "dotted",
+       add = TRUE
+     )
+
+     text(
+       x = 30,
+       y = (30^2 - 3*(a + b)/2*30 + 3*a*b + d),
+       labels = "AVC",
+       xpd = TRUE,
+       pos = 4
+     )
+   }
 
 # draw market price (with possible adjustment to demonstrate normal profit)
 
     if (show_market_price == TRUE) {
       abline(h = d + h)
+
+      mtext(
+        text = "D=P=AR=MR",
+        side = 4,
+        at = d + h,
+        line = 0.5,
+        cex = 0.9
+      )
     }
 
 # add arrows to end of plot axes
