@@ -167,15 +167,6 @@ cm_plot <-
       bg = "black"
     )
 
-    # legend(
-    #   x = 30,
-    #   y = -15,
-    #   legend = "Quantity",
-    #   bg = "white",
-    #   xpd = TRUE,
-    #   box.col = "white"
-    # )
-
 # show profit maximizing quantity
 
     if (show_profit_maximizing_quantity == T) {
