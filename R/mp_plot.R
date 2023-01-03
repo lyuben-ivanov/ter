@@ -89,8 +89,8 @@ mp_plot <-
       text = "Price\n Cost\nRevenue",
       side = 2,
       cex = 0.9,
-      at = 645,
-      line = 1
+      at = 530,
+      line = 0.5
     )
 
 # label x-axis
@@ -99,8 +99,8 @@ mp_plot <-
       text = "Quantity",
       side = 1,
       cex = 0.9,
-      at = 35,
-      line = 1,
+      at = 30,
+      line = 0.5,
       bg = "black"
     )
 
@@ -242,10 +242,26 @@ mp_plot <-
         lty = "dashed"
       )
 
+      mtext(
+        text = "Q*",
+        side = 1,
+        line = 0.5,
+        cex = 0.9,
+        at = profit_maximizing_q,
+      )
+
       lines(
         x = c(0, profit_maximizing_q),
         y = c(profit_maximizing_p, profit_maximizing_p),
         lty = "dashed"
+      )
+
+      mtext(
+        text = "P*",
+        side = 2,
+        line = 0.5,
+        cex = 0.9,
+        at = profit_maximizing_p,
       )
 
     }
