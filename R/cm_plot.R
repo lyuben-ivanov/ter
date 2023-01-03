@@ -54,7 +54,9 @@ cm_plot <-
         bty = "l",
         xlab = "",
         ylab = "",
-        lty = "longdash"
+        lty = "longdash",
+        xaxt = "n",
+        yaxt = "n"
       )
 
       text(
@@ -74,7 +76,9 @@ cm_plot <-
         bty = "l",
         xlab = "",
         ylab = "",
-        lty = "blank"
+        lty = "blank",
+        xaxt = "n",
+        yaxt = "n"
       )
     }
 
@@ -152,8 +156,8 @@ cm_plot <-
       text = "Price\n Cost\nRevenue",
       side = 2,
       cex = 0.9,
-      at = 645,
-      line = 1
+      at = 530,
+      line = 0.5
       )
 
 # label x-axis
@@ -162,8 +166,8 @@ cm_plot <-
       text = "Quantity",
       side = 1,
       cex = 0.9,
-      at = 35,
-      line = 1,
+      at = 30,
+      line = 0.5,
       bg = "black"
     )
 
@@ -174,6 +178,13 @@ cm_plot <-
         x = c(profit_maximizing_q, profit_maximizing_q),
         y = c(d, 0),
         lty = "dashed"
+      )
+
+      mtext(
+        text = "Q*",
+        side = 1,
+        at = profit_maximizing_q,
+        line = 0.5
       )
     }
 
