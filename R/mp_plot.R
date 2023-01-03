@@ -209,7 +209,8 @@ mp_plot <-
 
       abline(
         a = reservation_price,
-        b = 2*demand_slope
+        b = 2*demand_slope,
+        lty = "twodash"
       )
 
       mtext(
